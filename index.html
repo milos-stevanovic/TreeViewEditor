@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="keywords" content="TreeView Editor" />
+    <title id='Description'>TreeView Editor Test</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
+    <link rel="stylesheet" href="css/jqx.material.css" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jqxcore.js"></script>
+    <script type="text/javascript" src="js/jqxbuttons.js"></script>
+    <script type="text/javascript" src="js/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="js/jqxpanel.js"></script>
+    <script type="text/javascript" src="js/jqxtree.js"></script>
+    <script type="text/javascript" src="js/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="js/jqxmenu.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body class='default'>
+    <div id='CategoryTree' style='visibility: hidden; float: left; margin-left: 20px;'>
+        <ul>
+            <li id='home' item-selected='true'>Home</li>
+            <li item-expanded='true'>Solutions
+                <ul>
+                    <li>Education</li>
+                    <li>Financial services</li>
+                    <li>Government</li>
+                    <li>Manufacturing</li>
+                    <li>Solutions
+                        <ul>
+                            <li>Consumer photo and video</li>
+                            <li>Mobile</li>
+                            <li>Rich Internet applications</li>
+                            <li>Technical communication</li>
+                            <li>Training and eLearning</li>
+                            <li>Web conferencing</li>
+                        </ul>
+                    </li>
+                    <li>All industries and solutions</li>
+                </ul>
+            </li>
+            <li>Products
+                <ul>
+                    <li>PC products</li>
+                    <li>Mobile products</li>
+                    <li>All products</li>
+                </ul>
+            </li>
+            <li>Support
+                <ul>
+                    <li>Support home</li>
+                    <li>Customer Service</li>
+                    <li>Knowledge base</li>
+                    <li>Books</li>
+                    <li>Training and certification</li>
+                    <li>Support programs</li>
+                    <li>Forums</li>
+                    <li>Documentation</li>
+                    <li>Updates</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id='MenuItems'>
+        <ul>
+            <li>Add Item</li>
+            <li>Edit Item</li>
+            <li>Remove Item</li>
+        </ul>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Manipulate Data</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">Title</label>
+                    <div>
+                        <input id="title-text" class="form-control input-lg" name="title" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="save" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
