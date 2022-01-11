@@ -43,7 +43,8 @@ $(document).ready(function () {
                         selectedElemetParent.prev().find('i').remove();
                         selectedElemetParent.remove();
                     }
-                    selectedElemet.next().find('div').remove();
+                    if(selectedElemet.next().is('div'))
+                      selectedElemet.next().remove();
                     selectedElemet.remove();
                     attachContextMenu();
                 }
