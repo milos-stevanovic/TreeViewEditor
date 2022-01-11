@@ -1,74 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="keywords" content="TreeView Editor" />
+    <meta name="keywords" content="TreeView Editor"/>
     <title id='Description'>TreeView Editor Test</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1"/>
     <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
-    <link rel="stylesheet" href="css/jqx.material.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/jqxcore.js"></script>
-    <script type="text/javascript" src="js/jqxbuttons.js"></script>
-    <script type="text/javascript" src="js/jqxscrollbar.js"></script>
-    <script type="text/javascript" src="js/jqxtree.js"></script>
     <script type="text/javascript" src="js/jqxmenu.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 </head>
-<body class='default'>
-    <div id='CategoryTree'>
-        <ul>
-            <li id='home' item-selected='true'>Home</li>
-            <li item-expanded='true'>Solutions
-                <ul>
-                    <li>Education</li>
-                    <li>Financial services</li>
-                    <li>Government</li>
-                    <li>Manufacturing</li>
-                    <li>Solutions
-                        <ul>
-                            <li>Consumer photo and video</li>
-                            <li>Mobile</li>
-                            <li>Rich Internet applications</li>
-                            <li>Technical communication</li>
-                            <li>Training and eLearning</li>
-                            <li>Web conferencing</li>
-                        </ul>
-                    </li>
-                    <li>All industries and solutions</li>
-                </ul>
-            </li>
-            <li>Products
-                <ul>
-                    <li>PC products</li>
-                    <li>Mobile products</li>
-                    <li>All products</li>
-                </ul>
-            </li>
-            <li>Support
-                <ul>
-                    <li>Support home</li>
-                    <li>Customer Service</li>
-                    <li>Knowledge base</li>
-                    <li>Books</li>
-                    <li>Training and certification</li>
-                    <li>Support programs</li>
-                    <li>Forums</li>
-                    <li>Documentation</li>
-                    <li>Updates</li>
-                </ul>
-            </li>
-        </ul>
+<body>
+<div id='CategoryTree'>
+    <div class="just-padding">
+        <div class="list-group list-group-root well">
+            <a href="#item-1" class="list-group-item" data-toggle="collapse">
+                <i class="glyphicon glyphicon-chevron-right"></i><span>Item 1</span>
+            </a>
+            <div class="list-group collapse" id="item-1">
+                <a href="#item-1-1" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 1.1</span>
+                </a>
+                <div class="list-group collapse" id="item-1-1">
+                    <a href="#" class="list-group-item"><span>Item 1.1.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 1.1.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 1.1.3</span></a>
+                </div>
+                <a href="#item-1-2" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 1.2</span>
+                </a>
+                <div class="list-group collapse" id="item-1-2">
+                    <a href="#" class="list-group-item"><span>Item 1.2.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 1.2.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 1.2.3</span></a>
+                </div>
+                <a href="#item-1-3" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 1.3</span>
+                </a>
+                <div class="list-group collapse" id="item-1-3">
+                    <a href="#" class="list-group-item"><span>Item 1.3.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 1.3.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 1.3.3</span></a>
+                </div>
+            </div>
+            <a href="#item-2" class="list-group-item" data-toggle="collapse">
+                <i class="glyphicon glyphicon-chevron-right"></i><span>Item 2</span>
+            </a>
+            <div class="list-group collapse" id="item-2">
+                <a href="#item-2-1" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 2.1</span>
+                </a>
+                <div class="list-group collapse" id="item-2-1">
+                    <a href="#" class="list-group-item"><span>Item 2.1.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 2.1.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 2.1.3</span></a>
+                </div>
+                <a href="#item-2-2" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 2.2</span>
+                </a>
+                <div class="list-group collapse" id="item-2-2">
+                    <a href="#" class="list-group-item"><span>Item 2.2.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 2.2.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 2.2.3</span></a>
+                </div>
+                <a href="#item-2-3" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 2.3</span>
+                </a>
+                <div class="list-group collapse" id="item-2-3">
+                    <a href="#" class="list-group-item"><span>Item 2.3.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 2.3.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 2.3.3</span></a>
+                </div>
+            </div>
+            <a href="#item-3" class="list-group-item" data-toggle="collapse">
+                <i class="glyphicon glyphicon-chevron-right"></i><span>Item 3</span>
+            </a>
+            <div class="list-group collapse" id="item-3">
+                <a href="#item-3-1" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 3.1</span>
+                </a>
+                <div class="list-group collapse" id="item-3-1">
+                    <a href="#" class="list-group-item"><span>Item 3.1.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 3.1.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 3.1.3</span></a>
+                </div>
+                <a href="#item-3-2" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 3.2</span>
+                </a>
+                <div class="list-group collapse" id="item-3-2">
+                    <a href="#" class="list-group-item"><span>Item 3.2.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 3.2.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 3.2.3</span></a>
+                </div>
+                <a href="#item-3-3" class="list-group-item" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-chevron-right"></i><span>Item 3.3</span>
+                </a>
+                <div class="list-group collapse" id="item-3-3">
+                    <a href="#" class="list-group-item"><span>Item 3.3.1</span></a>
+                    <a href="#" class="list-group-item"><span>Item 3.3.2</span></a>
+                    <a href="#" class="list-group-item"><span>Item 3.3.3</span></a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id='MenuItems'>
-        <ul>
-            <li>Add Item</li>
-            <li>Edit Item</li>
-            <li>Remove Item</li>
-        </ul>
-    </div>
+</div>
+<div id='MenuItems'>
+    <ul>
+        <li>Add Item</li>
+        <li>Edit Item</li>
+        <li>Remove Item</li>
+    </ul>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

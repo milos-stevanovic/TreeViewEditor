@@ -1,17 +1,14 @@
 let selectedElemet;
 let EditAction = 0;
 $(document).ready(function () {
-    // Create Category Tree
-    $('#CategoryTree').jqxTree({ height: '800px', width: '300px', theme: 'material', toggleMode: 'click' });
-    $('#CategoryTree').css('visibility', 'visible');
     var contextMenu = $("#MenuItems").jqxMenu({ width: '120px',   autoOpenPopup: false, mode: 'popup' });
     var attachContextMenu = function () {
         // open the context menu when the user presses the mouse right button.
-        $("#CategoryTree li").on('mousedown', function (event) {
-            var target = $(event.target).parents('li:first')[0];
+        $("#CategoryTree a").on('mousedown', function (event) {
+            selectedElemet = $(event.target);
+            if (selectedElemet.is('span')) { selectedElemet = selectedElemet.parent()}
             var rightClick = isRightClick(event);
-            if (rightClick && target != null) {
-                $("#CategoryTree").jqxTree('selectItem', target);
+            if (rightClick && selectedElemet != null) {
                 var scrollTop = $(window).scrollTop();
                 var scrollLeft = $(window).scrollLeft();
                 contextMenu.jqxMenu('open', parseInt(event.clientX) + 5 + scrollLeft, parseInt(event.clientY) + 5 + scrollTop);
@@ -22,11 +19,9 @@ $(document).ready(function () {
     attachContextMenu();
     $("#MenuItems").on('itemclick', function (event) {
         var item = $.trim($(event.args).text());
-        var selectedItem = $('#CategoryTree').jqxTree('selectedItem');
-        selectedElemet = selectedItem.element;
         switch (item) {
             case "Add Item":
-                if (selectedItem != null) {
+                if (selectedElemet != null) {
                     EditAction = 1;
                     $(".modal-title").text('Add New Category');
                     $("#title-text").val('');
@@ -34,27 +29,33 @@ $(document).ready(function () {
                 }
                 break;
             case "Edit Item":
-                if (selectedItem != null) {
+                if (selectedElemet != null) {
                     EditAction = 2;
                     $(".modal-title").text('Edit Category');
-                    $("#title-text").val($(selectedItem.element).find('div').first().text());
+                    $("#title-text").val(selectedElemet.text().trim());
                     $("#myModal").modal();
                 }
                 break;
             case "Remove Item":
-                if (selectedItem != null) {
-                    $('#CategoryTree').jqxTree('removeItem', selectedItem.element);
+                if (selectedElemet != null) {
+                    var selectedElemetParent = selectedElemet.parent();
+                    if (selectedElemetParent.find('a').length - 1 == 0) {  //remove glyphicon if there is no items
+                        selectedElemetParent.prev().find('i').remove();
+                        selectedElemetParent.remove();
+                    }
+                    selectedElemet.next().find('div').remove();
+                    selectedElemet.remove();
                     attachContextMenu();
                 }
                 break;
         }
     });
-    $("#save").click(function() {
+    $("#save").on("click",function(){
         UpdateValue();
     });
     // disable the default browser's context menu.
     $(document).on('contextmenu', function (e) {
-        if ($(e.target).parents('.jqx-tree').length > 0) {
+        if ($(e.target).parents('#CategoryTree').length > 0) {
             return false;
         }
         return true;
@@ -67,16 +68,32 @@ $(document).ready(function () {
         return rightclick;
     }
     function UpdateValue() {
+        var titleText = $('#title-text').val();
         switch (EditAction) {
-            case 1:
-                $('#CategoryTree').jqxTree('addTo', { label: $('#title-text').val() }, selectedElemet);
-                $('#CategoryTree').jqxTree('expandItem', selectedElemet);
+            case 1: //Add Item
+                var nextSelectedElement = selectedElemet.next();
+                if (nextSelectedElement.is('div')){
+                    if (nextSelectedElement.find("a").length > 0){
+                        nextSelectedElement.append('<a href="#" class="list-group-item"><span>' + titleText + '</span></a>');
+                    }
+                }else{
+                    var uniqueID = 'item-' + Math.floor(Date.now() / 1000);
+                    var selectedForAdd = $(selectedElemet).closest("a");
+                    selectedForAdd.attr({'href': '#' + uniqueID,'data-toggle' :'collapse'}).prepend('<i class="glyphicon glyphicon-chevron-right"></i>');
+                    selectedForAdd.after('<div class="list-group collapse" id="'+uniqueID+'"> <a href="#" class="list-group-item"><span>' + titleText + ' </span> </a></div>');
+                    selectedForAdd.next().collapse('show');
+                }
                 break;
-            case 2:
-                $('#CategoryTree').jqxTree('updateItem', selectedElemet, { label: $('#title-text').val() });
+            case 2: //Edit Item
+                selectedElemet.find('span').text(titleText );
                 break;
         }
         $("#myModal").modal('hide');
         attachContextMenu();
     }
+    $('.list-group-item').on('click', function() {
+        $('.glyphicon', this)
+            .toggleClass('glyphicon-chevron-right')
+            .toggleClass('glyphicon-chevron-down');
+    });
 });
