@@ -41,7 +41,6 @@ $(document).ready(function () {
                     var selectedElemetParent = selectedElemet.parent();
                     if (selectedElemetParent.find('a').length - 1 == 0) {  //remove glyphicon if there is no items
                         selectedElemetParent.prev().find('i').remove();
-                        selectedElemetParent.remove();
                     }
                     if(selectedElemet.next().is('div'))
                       selectedElemet.next().remove();
@@ -73,17 +72,17 @@ $(document).ready(function () {
         switch (EditAction) {
             case 1: //Add Item
                 var nextSelectedElement = selectedElemet.next();
+                var selectedForAdd = $(selectedElemet).closest("a");
                 if (nextSelectedElement.is('div')){
                     if (nextSelectedElement.find("a").length > 0){
                         nextSelectedElement.append('<a href="#" class="list-group-item"><span>' + titleText + '</span></a>');
                     }
                 }else{
                     var uniqueID = 'item-' + Math.floor(Date.now() / 1000);
-                    var selectedForAdd = $(selectedElemet).closest("a");
                     selectedForAdd.attr({'href': '#' + uniqueID,'data-toggle' :'collapse'}).prepend('<i class="glyphicon glyphicon-chevron-right"></i>');
                     selectedForAdd.after('<div class="list-group collapse" id="'+uniqueID+'"> <a href="#" class="list-group-item"><span>' + titleText + ' </span> </a></div>');
-                    selectedForAdd.next().collapse('show');
                 }
+                selectedForAdd.next().collapse('show');
                 break;
             case 2: //Edit Item
                 selectedElemet.find('span').text(titleText );
